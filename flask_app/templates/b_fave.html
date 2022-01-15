@@ -10,20 +10,22 @@
     <div class="left">
         <h1>Title: {{ book.name }}</h1>
         <h4>Favorited by:</h4>
-        {% for author in books.authors_favorited %}
+        {% for author in book.authors_favorited %}
         <h4>{{ author.name }}</h4>
         {% endfor %}
         </h4>
     </div>
     <div class="right">
         <h1>Add Book's Favorite</h1>
-        <form action="add/author/" method="post"></form>
+        <form action="/add/author" method="post">
+            <input type="hidden" name="book_id" value="{{book.id}}">
             <select name="author_id">
                 {% for author in authors %}
                 <option value="{{author.id}}">{{ author.name }}</option>
                 {% endfor %}
             </select>
             <button>Add</button>
+        </form>
     </div>
     <a href="/">Home</a>
 </body>
